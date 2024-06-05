@@ -1,0 +1,47 @@
+﻿@model WebClient.Models.ListBookingDetail
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<p>
+
+	<a asp-action="CreateDetail">>Đặt lịch mới</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Mã đặt lịch </th>
+			<th>Mã dịch vụ </th>
+			<th>Mã bác sĩ </th>
+			<th>Giá dịch vụ </th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model != null)
+		{
+			@foreach (var item in Model.BookingDetails)
+			{
+								<tr>						
+									<td>
+						@Html.DisplayFor(modelItem => item.BookingId)
+									</td>
+									<td>
+						@Html.DisplayFor(modelItem => item.ServiceId)
+									</td>
+									<td>
+						@Html.DisplayFor(modelItem => item.DoctorId)
+									</td>
+									<td>
+						@Html.DisplayFor(modelItem => item.ServicePrice)
+							</td>
+							<td>
+						<a href="@Url.Action("Payment", "User", new { bookingId = item.BookingId })" class="btn btn-primary">Payment</a>
+					</td> 					
+							</tr>
+			}
+		}
+	</tbody>
+</table>

@@ -1,0 +1,79 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<style>
+    .login-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+        
+
+        .login-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 3px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .login-container button:hover {
+                background-color: #45a049;
+            }
+
+        .login-container .text-danger {
+            color: red;
+        }
+
+
+</style>
+
+
+           <div class="login-container">
+        <form id="loginForm" method="post" asp-controller="Home" asp-action="Login">
+            <div>
+                <label for="UserName">Tên tài khoản</label>
+                <input type="text" name="UserName" required />
+            </div>
+            <div>
+                <label for="Password">Mật khẩu</label>
+                <input type="password" name="Password" required />
+            </div>
+            <div class="button-container">
+                <button type="submit">Đăng nhập</button>
+            </div>
+        </form>
+       
+
+        @if (ViewBag.Msg != null)
+        {
+            <p class="text-danger">@ViewBag.Msg</p>
+        }
+    </div>
+
+
+
+

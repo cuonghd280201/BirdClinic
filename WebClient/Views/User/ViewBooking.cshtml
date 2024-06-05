@@ -1,0 +1,56 @@
+﻿@model WebClient.Models.ListBooking
+
+
+<p>
+	<a asp-action="Create">Đặt lịch mới</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				Ngày tạo 
+			</th>
+			<th>
+				Giờ khám bắt đầu
+			</th>
+			<th>
+				Kêt thúc giờ khám
+			</th>
+			<th>
+				Tình trạng
+			</th>
+			<th>
+				Tổng tiền 
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model != null)
+		{
+			@foreach (var item in Model.Bookings)
+			{
+						<tr>						
+							<td>
+						@Html.DisplayFor(modelItem => item.CretedAt)
+							</td>
+							<td>
+						@Html.DisplayFor(modelItem => item.StartTime)
+							</td>
+							<td>
+						@Html.DisplayFor(modelItem => item.EndTime)
+							</td>
+							<td>
+						@Html.DisplayFor(modelItem => item.Status)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.TotalMoney)
+					</td>
+					<td>
+						<a class="btn btn-primary" href="@Url.Action("ViewBookingDetail", "User", new { bookingId = item.Id })">Chi tiết</a>
+						
+					</td>
+					</tr>
+			}
+		}
+	</tbody>
+</table>
